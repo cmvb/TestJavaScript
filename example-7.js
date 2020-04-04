@@ -4,14 +4,17 @@ const companies = createAll();
 
 cleanConsole(7, companies);
 console.log('---- EXAMPLE 7 part 1 --- ', refactorCompaniesEJ7P1(companies[0].id));
-console.log('---- EXAMPLE 7 part 2 --- ', refactorCompaniesEJ7P2(companies[0].id));
+console.log('---- EXAMPLE 7 part 2 --- ', refactorCompaniesEJ7P2(companies[1].id));
 console.log('---- EXAMPLE 7 part 3 --- ', 'Put here your function');
-console.log('---- EXAMPLE 7 part 4 --- ', refactorCompaniesEJ7P4(companies[0].id));
+console.log('---- EXAMPLE 7 part 4 --- ', refactorCompaniesEJ7P4(companies[2].id));
 console.log('---- EXAMPLE 7 part 5 --- ', 'Put here your function');
-console.log('---- EXAMPLE 7 part 6 --- ', refactorCompaniesEJ7P6(companies[0].id, companies[0].users[0].id));
+console.log('---- EXAMPLE 7 part 6 --- ', refactorCompaniesEJ7P6(companies[3].id, companies[3].users[0].id));
 console.log('---- EXAMPLE 7 part 7 --- ', 'Put here your function');
 console.log('---- EXAMPLE 7 part 8 --- ', 'Put here your function');
-console.log('---- EXAMPLE 7 part 9 --- ', 'Put here your function');
+const idAntes = companies[1].id;
+const idUser = companies[1].users[0].id;
+const idDespues = companies[2].id;
+console.log('---- EXAMPLE 7 part 9 --- ', refactorCompaniesEJ7P9(idAntes, idDespues, idUser));
 
 // --- PARTE 1
 function refactorCompaniesEJ7P1(idCompany) {
@@ -50,7 +53,7 @@ function refactorCompaniesEJ7P2(idCompany) {
 function refactorCompaniesEJ7P4(idCompany) {
   try {
     const result = [];
-    const idAzar = Math.floor(Math.random());
+    const idAzar = Math.floor(Math.random() + 1);
     const newUser = {firstName: 'Juan', lastName: 'Delgado', age: 35, car: true, id: idAzar};
     for (let i = 0; i < companies.length; i++) {
       const company = companies[i];
@@ -83,6 +86,44 @@ function refactorCompaniesEJ7P6(idCompany, idUser) {
       }
       result.push(company);
     }
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+// --- PARTE 9
+function refactorCompaniesEJ7P9(idCompanyAntes, idCompanyDespues, idUser) {
+  try {
+    const result = [];
+    let userCambiar = {};
+    for (let i = 0; i < companies.length; i++) {
+      const company = companies[i];
+      if (company.id === idCompanyAntes) {
+        const usersCompanyAntes = [];
+        for (let j = 0; j < company.users.length; j++) {
+          const user = company.users[j];
+          if (user.id === idUser) {
+            userCambiar = user;
+          } else {
+            usersCompanyAntes.push(user);
+          }
+        }
+        company.users = usersCompanyAntes;
+        company.usersLength = usersCompanyAntes.length;
+      }
+    }
+
+    for (let k = 0; k < companies.length; k++) {
+      const company = companies[k];
+      if (company.id === idCompanyDespues) {
+        company.users.push(userCambiar);
+        company.usersLength = company.users.length;
+      }
+
+      result.push(company);
+    }
+
     return result;
   } catch (error) {
     console.log(error);
