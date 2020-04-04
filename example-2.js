@@ -4,11 +4,11 @@ const companies = createAll();
 cleanConsole(2, companies);
 console.log('---- EXAMPLE 2 --- ', refactorCompaniesEJ2(companies, true));
 
-function refactorCompaniesEJ2(companies, hasCar) {
+function refactorCompaniesEJ2(companias, hasCar) {
   try {
     const result = [];
-    for (let i = 0; i < companies.length; i++) {
-      const company = companies[i];
+    for (let i = 0; i < companias.length; i++) {
+      const company = companias[i];
       const users = [];
       for (let j = 0; j < company.users.length; j++) {
         const user = company.users[j];

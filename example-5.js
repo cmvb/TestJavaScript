@@ -2,7 +2,47 @@ import {cleanConsole, createAll} from './data';
 const companies = createAll();
 
 cleanConsole(5, companies);
-console.log('---- EXAMPLE 5 --- ', 'Put here your function');
+
+console.log('---- EXAMPLE 5 --- ', refactorCompaniesEJ5(companies));
+
+function refactorCompaniesEJ5(companias) {
+  try {
+    const result = {size: 0, average: 0, hasCar: 0, averageWithCar: 0};
+    const usersTotal = [];
+    const usersWithCar = [];
+    const userWithOutCar = [];
+    for (let i = 0; i < companias.length; i++) {
+      const company = companias[i];
+      for (let j = 0; j < company.users.length; j++) {
+        const user = company.users[j];
+        if (user.car) {
+          usersWithCar.push(user);
+        } else {
+          userWithOutCar.push(user);
+        }
+        usersTotal.push(user);
+      }
+    }
+
+    let sumAgeTotal = 0;
+    for (let k = 0; k < usersTotal.length; k++) {
+      sumAgeTotal = sumAgeTotal + usersTotal[k].age;
+    }
+    let sumAgeWithCar = 0;
+    for (let l = 0; l < usersWithCar.length; l++) {
+      sumAgeWithCar = sumAgeWithCar + usersWithCar[l].age;
+    }
+
+    result.size = usersTotal.length;
+    result.average = sumAgeTotal / result.size;
+    result.hasCar = usersWithCar.length;
+    result.averageWithCar = sumAgeWithCar / result.hasCar;
+
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL
