@@ -15,8 +15,8 @@ function refactorCompaniesEJ1(companias) {
         const user = company.users[j];
         let nombre = (typeof user.firstName === 'undefined' || user.firstName === undefined) ? '' : user.firstName;
         let apellido = (typeof user.lastName === 'undefined' || user.lastName === undefined) ? '' : user.lastName;
-        nombre = nombre.charAt(0).toUpperCase() + nombre.substring(1, nombre.length - 1);
-        apellido = apellido.charAt(0).toUpperCase() + apellido.substring(1, apellido.length - 1);
+        nombre = nombre.charAt(0).toUpperCase() + nombre.substring(1, nombre.length);
+        apellido = apellido.charAt(0).toUpperCase() + apellido.substring(1, apellido.length);
         user.firstName = nombre;
         user.lastName = apellido;
         users.push(user);

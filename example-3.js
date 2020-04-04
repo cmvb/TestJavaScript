@@ -1,9 +1,41 @@
 import {cleanConsole, createAll} from './data';
+import * as fileEx1 from './example-1';
 
 const companies = createAll();
 
 cleanConsole(3, companies);
-console.log('---- EXAMPLE 3 --- ', 'Put here your function');
+console.log('---- EXAMPLE 3 --- ', refactorCompaniesEJ3(companies));
+
+function refactorCompaniesEJ3(companias) {
+  try {
+    const companiasEJ1 = fileEx1.refactorCompaniesEJ1(companies);
+    const result = true;
+    for (let i = 0; i < companias.length; i++) {
+      const company = companias[i];
+      company.name = company.name.toUpperCase();
+      if (companiasEJ1[i].name === company.name) {
+        for (let j = 0; j < company.users.length; j++) {
+          const user = company.users[j];
+          let nombre = (typeof user.firstName === 'undefined' || user.firstName === undefined) ? '' : user.firstName;
+          let apellido = (typeof user.lastName === 'undefined' || user.lastName === undefined) ? '' : user.lastName;
+          nombre = nombre.toUpperCase();
+          apellido = apellido.toUpperCase();
+          if (companiasEJ1[i].users[j].firstName !== nombre || companiasEJ1[i].users[j].lastName !== apellido) {
+            result = false;
+            break;
+          }
+        }
+      } else {
+        result = false;
+        break;
+      }
+    }
+
+    return result;
+  } catch (error) {
+    console.log(error);
+  }
+}
 
 // -----------------------------------------------------------------------------
 // INSTRUCCIONES EN ESPAÑOL
