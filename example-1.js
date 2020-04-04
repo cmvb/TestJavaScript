@@ -9,7 +9,7 @@ function refactorCompaniesEJ1(companias) {
     const result = [];
     for (let i = 0; i < companias.length; i++) {
       const company = companias[i];
-      company.name = company.name.charAt(0).toUpperCase() + company.name.substring(1, company.name.length - 1);
+      company.name = company.name.charAt(0).toUpperCase() + company.name.substring(1, company.name.length);
       const users = [];
       for (let j = 0; j < company.users.length; j++) {
         const user = company.users[j];

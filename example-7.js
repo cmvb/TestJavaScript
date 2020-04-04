@@ -50,7 +50,7 @@ function refactorCompaniesEJ7P2(idCompany) {
 function refactorCompaniesEJ7P4(idCompany) {
   try {
     const result = [];
-    const idAzar = Math.random();
+    const idAzar = Math.floor(Math.random());
     const newUser = {firstName: 'Juan', lastName: 'Delgado', age: 35, car: true, id: idAzar};
     for (let i = 0; i < companies.length; i++) {
       const company = companies[i];
