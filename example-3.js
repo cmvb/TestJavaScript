@@ -1,5 +1,5 @@
 import {cleanConsole, createAll} from './data';
-import * as fileEx1 from './example-1';
+import {refactorCompaniesEJ1} from './example-1.js';
 
 const companies = createAll();
 
@@ -8,7 +8,7 @@ console.log('---- EXAMPLE 3 --- ', refactorCompaniesEJ3(companies));
 
 function refactorCompaniesEJ3(companias) {
   try {
-    const companiasEJ1 = fileEx1.refactorCompaniesEJ1(companies);
+    const companiasEJ1 = refactorCompaniesEJ1(companies);
     const result = true;
     for (let i = 0; i < companias.length; i++) {
       const company = companias[i];

@@ -4,7 +4,7 @@ const companies = createAll();
 cleanConsole(1, companies);
 console.log('---- EXAMPLE 1 --- ', refactorCompaniesEJ1(companies));
 
-function refactorCompaniesEJ1(companias) {
+export function refactorCompaniesEJ1(companias) {
   try {
     const result = [];
     for (let i = 0; i < companias.length; i++) {
